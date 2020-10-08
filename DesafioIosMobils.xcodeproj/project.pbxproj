@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		191BF5B625C2A7DD341731C3 /* Pods_DesafioIosMobils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1E01E3A25D9C554BCA60BB /* Pods_DesafioIosMobils.framework */; };
 		AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */; };
+		AF2EECBB252FBAC90037806D /* Registro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECBA252FBAC90037806D /* Registro.storyboard */; };
+		AF2EECBE252FBB450037806D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECBD252FBB450037806D /* User.swift */; };
+		AF2EECC2252FC0570037806D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECC1252FC0570037806D /* Login.storyboard */; };
 		AFB5FEAF252F85B30014B377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEAE252F85B30014B377 /* AppDelegate.swift */; };
 		AFB5FEB1252F85B30014B377 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEB0252F85B30014B377 /* SceneDelegate.swift */; };
 		AFB5FEB3252F85B30014B377 /* DespesasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEB2252F85B30014B377 /* DespesasViewController.swift */; };
@@ -26,6 +29,9 @@
 		41A10D2F0C9792408D0E2A05 /* Pods-DesafioIosMobils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.debug.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.debug.xcconfig"; sourceTree = "<group>"; };
 		91D1704595A044EB75247028 /* Pods-DesafioIosMobils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.release.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.release.xcconfig"; sourceTree = "<group>"; };
 		AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AF2EECBA252FBAC90037806D /* Registro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registro.storyboard; sourceTree = "<group>"; };
+		AF2EECBD252FBB450037806D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AF2EECC1252FC0570037806D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		AFB5FEAB252F85B30014B377 /* DesafioIosMobils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioIosMobils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB5FEAE252F85B30014B377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFB5FEB0252F85B30014B377 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,8 @@
 				AFB5FEB4252F85B30014B377 /* Despesa.storyboard */,
 				AFB5FECD252F89EB0014B377 /* NovaDespesa.storyboard */,
 				AFB5FED2252F8EB70014B377 /* DespesasTableViewCell.swift */,
+				AF2EECBA252FBAC90037806D /* Registro.storyboard */,
+				AF2EECC1252FC0570037806D /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				AFB5FECA252F880D0014B377 /* Despesa.swift */,
+				AF2EECBD252FBB450037806D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +199,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB5FEBB252F85B40014B377 /* LaunchScreen.storyboard in Resources */,
+				AF2EECBB252FBAC90037806D /* Registro.storyboard in Resources */,
+				AF2EECC2252FC0570037806D /* Login.storyboard in Resources */,
 				AFB5FEB8252F85B40014B377 /* Assets.xcassets in Resources */,
 				AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */,
 				AFB5FECE252F89EB0014B377 /* NovaDespesa.storyboard in Resources */,
@@ -252,6 +263,7 @@
 				AFB5FEAF252F85B30014B377 /* AppDelegate.swift in Sources */,
 				AFB5FEB1252F85B30014B377 /* SceneDelegate.swift in Sources */,
 				AFB5FEC4252F87290014B377 /* DespesasExtension.swift in Sources */,
+				AF2EECBE252FBB450037806D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
