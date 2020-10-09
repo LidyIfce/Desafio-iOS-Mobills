@@ -1,12 +1,12 @@
 //
-//  DespesasExtension.swift
+//  TransacoesExtension.swift
 //  DesafioIosMobils
 //
 //  Created by Lidiane Gomes Barbosa on 08/10/20.
 //
 
 import UIKit
-extension DespesasViewController: UITableViewDelegate, UITableViewDataSource {
+extension TransacoesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }

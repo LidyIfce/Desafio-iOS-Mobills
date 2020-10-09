@@ -1,5 +1,5 @@
 //
-//  DespesasViewController.swift
+//  TransacoesViewController.swift
 //  DesafioIosMobils
 //
 //  Created by Lidiane Gomes Barbosa on 08/10/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DespesasViewController: UIViewController {
+class TransacoesViewController: UIViewController {
     var despesas: [Despesa] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +17,14 @@ class DespesasViewController: UIViewController {
     @IBOutlet weak var valorPendente: UILabel!
     @IBOutlet weak var labelRecebido: UILabel!
     @IBOutlet weak var valueRecebido: UILabel!
+    
+
+    @IBAction func adicionarNovaTransacao(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "NovaTransacao", bundle: nil)
+        guard let viewC = storyboard.instantiateViewController(identifier: "novatransacao") as? NovaTransacaoViewController else { fatalError() }
+        viewC.modalPresentationStyle = .fullScreen
+        present(viewC, animated: true)
+    }
     
     lazy var titleButton: UIButton = {
         let button = UIButton()

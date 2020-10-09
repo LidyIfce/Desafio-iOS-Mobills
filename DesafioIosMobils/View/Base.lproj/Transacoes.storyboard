@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Despesas View Controller-->
+        <!--Transacoes View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="transacoes" id="BYZ-38-t0r" customClass="DespesasViewController" customModule="DesafioIosMobils" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="transacoes" id="BYZ-38-t0r" customClass="TransacoesViewController" customModule="DesafioIosMobils" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,7 +143,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DKe-z9-TFr" secondAttribute="bottom" id="vhb-zB-ER5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Q9b-tm-1hz"/>
+                    <navigationItem key="navigationItem" id="Q9b-tm-1hz">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="rxf-LS-EWI">
+                            <connections>
+                                <action selector="adicionarNovaTransacao:" destination="BYZ-38-t0r" id="pdt-By-jTs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="labelPendente" destination="woV-tO-Jyp" id="rgO-9C-mQG"/>
                         <outlet property="labelRecebido" destination="uZc-e4-F9S" id="YwT-Ky-tsd"/>
@@ -180,6 +186,7 @@
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
