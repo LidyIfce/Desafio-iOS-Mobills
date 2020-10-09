@@ -29,10 +29,6 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
                 return
             }
-            
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else {
-                return
-            }
     
             self.dismiss(animated: true)
         }

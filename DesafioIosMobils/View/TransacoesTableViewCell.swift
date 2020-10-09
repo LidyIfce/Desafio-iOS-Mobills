@@ -7,16 +7,18 @@
 
 import UIKit
 
-class DespesasTableViewCell: UITableViewCell {
+class TransacoesTableViewCell: UITableViewCell {
     var despesa: Despesa?
     
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var valor: UILabel!
-    @IBOutlet weak var data: UILabel!
-    @IBOutlet weak var pago: UISwitch!
     @IBOutlet weak var descricao: UILabel!
+    @IBOutlet weak var status: UIButton!
     
-    static let reuseIdentifier = "DespesasTableViewCell"
+    @IBAction func atualizarStatus(_ sender: Any) {
+    }
+    
+    static let reuseIdentifier = "TransacoesTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -32,9 +34,7 @@ class DespesasTableViewCell: UITableViewCell {
     func configureCell() {
         if let despesa = despesa {
             self.valor.text = despesa.valorString()
-            self.data.text = despesa.dataString()
             self.descricao.text = despesa.descricao
-            self.pago.isOn = despesa.pago
         }
     }
 
