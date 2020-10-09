@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		191BF5B625C2A7DD341731C3 /* Pods_DesafioIosMobils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1E01E3A25D9C554BCA60BB /* Pods_DesafioIosMobils.framework */; };
+		81D2A8D147E82A0E0CCBAD83 /* Pods_DesafioIosMobils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C613FC31475BB2058F4F8E5F /* Pods_DesafioIosMobils.framework */; };
 		AF2855CE253097F800B7B4CE /* NovaTransacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2855CD253097F800B7B4CE /* NovaTransacaoViewController.swift */; };
+		AF2855D32530A1EE00B7B4CE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2855D22530A1EE00B7B4CE /* UserService.swift */; };
+		AF2855E72530A4E700B7B4CE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AF2855E62530A4E700B7B4CE /* Podfile */; };
+		AF28560E2530BF8F00B7B4CE /* TransacaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28560D2530BF8F00B7B4CE /* TransacaoService.swift */; };
+		AF2856112530CC1300B7B4CE /* Receita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856102530CC1300B7B4CE /* Receita.swift */; };
+		AF2856142530CE4000B7B4CE /* Despesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856132530CE4000B7B4CE /* Despesa.swift */; };
+		AF2856172530DCDB00B7B4CE /* extensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856162530DCDB00B7B4CE /* extensionTextField.swift */; };
 		AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */; };
 		AF2EECBB252FBAC90037806D /* Registro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECBA252FBAC90037806D /* Registro.storyboard */; };
 		AF2EECBE252FBB450037806D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECBD252FBB450037806D /* User.swift */; };
@@ -25,16 +31,21 @@
 		AFB5FEB8252F85B40014B377 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB5FEB7252F85B40014B377 /* Assets.xcassets */; };
 		AFB5FEBB252F85B40014B377 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB5FEB9252F85B40014B377 /* LaunchScreen.storyboard */; };
 		AFB5FEC4252F87290014B377 /* TransacoesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEC3252F87290014B377 /* TransacoesExtension.swift */; };
-		AFB5FECB252F880D0014B377 /* Despesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FECA252F880D0014B377 /* Despesa.swift */; };
+		AFB5FECB252F880D0014B377 /* Transacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FECA252F880D0014B377 /* Transacao.swift */; };
 		AFB5FECE252F89EB0014B377 /* NovaTransacao.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB5FECD252F89EB0014B377 /* NovaTransacao.storyboard */; };
 		AFB5FED3252F8EB70014B377 /* TransacoesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FED2252F8EB70014B377 /* TransacoesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E1E01E3A25D9C554BCA60BB /* Pods_DesafioIosMobils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioIosMobils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		41A10D2F0C9792408D0E2A05 /* Pods-DesafioIosMobils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.debug.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.debug.xcconfig"; sourceTree = "<group>"; };
-		91D1704595A044EB75247028 /* Pods-DesafioIosMobils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.release.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.release.xcconfig"; sourceTree = "<group>"; };
+		58EEC3D44E7D7DDF52AB09A1 /* Pods-DesafioIosMobils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.debug.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.debug.xcconfig"; sourceTree = "<group>"; };
+		6C3F6956FAAD8E66FDED694E /* Pods-DesafioIosMobils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioIosMobils.release.xcconfig"; path = "Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils.release.xcconfig"; sourceTree = "<group>"; };
 		AF2855CD253097F800B7B4CE /* NovaTransacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaTransacaoViewController.swift; sourceTree = "<group>"; };
+		AF2855D22530A1EE00B7B4CE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		AF2855E62530A4E700B7B4CE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		AF28560D2530BF8F00B7B4CE /* TransacaoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacaoService.swift; sourceTree = "<group>"; };
+		AF2856102530CC1300B7B4CE /* Receita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receita.swift; sourceTree = "<group>"; };
+		AF2856132530CE4000B7B4CE /* Despesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despesa.swift; sourceTree = "<group>"; };
+		AF2856162530DCDB00B7B4CE /* extensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionTextField.swift; sourceTree = "<group>"; };
 		AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AF2EECBA252FBAC90037806D /* Registro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registro.storyboard; sourceTree = "<group>"; };
 		AF2EECBD252FBB450037806D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -53,9 +64,10 @@
 		AFB5FEBA252F85B40014B377 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFB5FEBC252F85B40014B377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFB5FEC3252F87290014B377 /* TransacoesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacoesExtension.swift; sourceTree = "<group>"; };
-		AFB5FECA252F880D0014B377 /* Despesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despesa.swift; sourceTree = "<group>"; };
+		AFB5FECA252F880D0014B377 /* Transacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transacao.swift; sourceTree = "<group>"; };
 		AFB5FECD252F89EB0014B377 /* NovaTransacao.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NovaTransacao.storyboard; sourceTree = "<group>"; };
 		AFB5FED2252F8EB70014B377 /* TransacoesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacoesTableViewCell.swift; sourceTree = "<group>"; };
+		C613FC31475BB2058F4F8E5F /* Pods_DesafioIosMobils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioIosMobils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +75,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				191BF5B625C2A7DD341731C3 /* Pods_DesafioIosMobils.framework in Frameworks */,
+				81D2A8D147E82A0E0CCBAD83 /* Pods_DesafioIosMobils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0227A2D939452A074AD5D454 /* Frameworks */ = {
+		5D546E3C6D544D83A5E7351C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1E1E01E3A25D9C554BCA60BB /* Pods_DesafioIosMobils.framework */,
+				C613FC31475BB2058F4F8E5F /* Pods_DesafioIosMobils.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -81,8 +93,8 @@
 		5DE644122FFA794350E0ED22 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				41A10D2F0C9792408D0E2A05 /* Pods-DesafioIosMobils.debug.xcconfig */,
-				91D1704595A044EB75247028 /* Pods-DesafioIosMobils.release.xcconfig */,
+				58EEC3D44E7D7DDF52AB09A1 /* Pods-DesafioIosMobils.debug.xcconfig */,
+				6C3F6956FAAD8E66FDED694E /* Pods-DesafioIosMobils.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -91,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				AF2EECCD252FD2AE0037806D /* AuthService.swift */,
+				AF2855D22530A1EE00B7B4CE /* UserService.swift */,
+				AF28560D2530BF8F00B7B4CE /* TransacaoService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -101,7 +115,7 @@
 				AFB5FEAD252F85B30014B377 /* DesafioIosMobils */,
 				AFB5FEAC252F85B30014B377 /* Products */,
 				5DE644122FFA794350E0ED22 /* Pods */,
-				0227A2D939452A074AD5D454 /* Frameworks */,
+				5D546E3C6D544D83A5E7351C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +139,7 @@
 				AFB5FEB7252F85B40014B377 /* Assets.xcassets */,
 				AFB5FEB9252F85B40014B377 /* LaunchScreen.storyboard */,
 				AFB5FEBC252F85B40014B377 /* Info.plist */,
+				AF2855E62530A4E700B7B4CE /* Podfile */,
 				AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */,
 			);
 			path = DesafioIosMobils;
@@ -152,6 +167,7 @@
 				AF2EECBA252FBAC90037806D /* Registro.storyboard */,
 				AF2EECC1252FC0570037806D /* Login.storyboard */,
 				AF2EECD1252FE08A0037806D /* TabBarController.storyboard */,
+				AF2856162530DCDB00B7B4CE /* extensionTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,8 +175,10 @@
 		AFB5FEC8252F87A80014B377 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AFB5FECA252F880D0014B377 /* Despesa.swift */,
+				AFB5FECA252F880D0014B377 /* Transacao.swift */,
 				AF2EECBD252FBB450037806D /* User.swift */,
+				AF2856102530CC1300B7B4CE /* Receita.swift */,
+				AF2856132530CE4000B7B4CE /* Despesa.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,11 +190,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFB5FEBF252F85B40014B377 /* Build configuration list for PBXNativeTarget "DesafioIosMobils" */;
 			buildPhases = (
-				F57375E7BFCCBE5E042892BC /* [CP] Check Pods Manifest.lock */,
+				377FFD927190D939F8273596 /* [CP] Check Pods Manifest.lock */,
 				AFB5FEA7252F85B30014B377 /* Sources */,
 				AFB5FEA8252F85B30014B377 /* Frameworks */,
 				AFB5FEA9252F85B30014B377 /* Resources */,
-				48CEECAC976CE2F632E5DDB6 /* [CP] Embed Pods Frameworks */,
+				5E1C362F907E11DF2E3236CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,6 +248,7 @@
 				AF2EECC2252FC0570037806D /* Login.storyboard in Resources */,
 				AFB5FEB8252F85B40014B377 /* Assets.xcassets in Resources */,
 				AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */,
+				AF2855E72530A4E700B7B4CE /* Podfile in Resources */,
 				AFB5FECE252F89EB0014B377 /* NovaTransacao.storyboard in Resources */,
 				AFB5FEB6252F85B30014B377 /* Transacoes.storyboard in Resources */,
 			);
@@ -238,24 +257,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48CEECAC976CE2F632E5DDB6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F57375E7BFCCBE5E042892BC /* [CP] Check Pods Manifest.lock */ = {
+		377FFD927190D939F8273596 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,6 +279,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5E1C362F907E11DF2E3236CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioIosMobils/Pods-DesafioIosMobils-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -288,13 +307,18 @@
 				AF2855CE253097F800B7B4CE /* NovaTransacaoViewController.swift in Sources */,
 				AF2EECCE252FD2AE0037806D /* AuthService.swift in Sources */,
 				AF2EECD5252FE2E20037806D /* TabBarViewController.swift in Sources */,
-				AFB5FECB252F880D0014B377 /* Despesa.swift in Sources */,
+				AFB5FECB252F880D0014B377 /* Transacao.swift in Sources */,
 				AFB5FED3252F8EB70014B377 /* TransacoesTableViewCell.swift in Sources */,
+				AF2856172530DCDB00B7B4CE /* extensionTextField.swift in Sources */,
+				AF28560E2530BF8F00B7B4CE /* TransacaoService.swift in Sources */,
+				AF2855D32530A1EE00B7B4CE /* UserService.swift in Sources */,
 				AFB5FEB3252F85B30014B377 /* TransacoesViewController.swift in Sources */,
 				AFB5FEAF252F85B30014B377 /* AppDelegate.swift in Sources */,
 				AF2EECC5252FC28A0037806D /* RegistroViewController.swift in Sources */,
 				AFB5FEB1252F85B30014B377 /* SceneDelegate.swift in Sources */,
 				AFB5FEC4252F87290014B377 /* TransacoesExtension.swift in Sources */,
+				AF2856142530CE4000B7B4CE /* Despesa.swift in Sources */,
+				AF2856112530CC1300B7B4CE /* Receita.swift in Sources */,
 				AF2EECBE252FBB450037806D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,7 +463,7 @@
 		};
 		AFB5FEC0252F85B40014B377 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41A10D2F0C9792408D0E2A05 /* Pods-DesafioIosMobils.debug.xcconfig */;
+			baseConfigurationReference = 58EEC3D44E7D7DDF52AB09A1 /* Pods-DesafioIosMobils.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -459,7 +483,7 @@
 		};
 		AFB5FEC1252F85B40014B377 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91D1704595A044EB75247028 /* Pods-DesafioIosMobils.release.xcconfig */;
+			baseConfigurationReference = 6C3F6956FAAD8E66FDED694E /* Pods-DesafioIosMobils.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

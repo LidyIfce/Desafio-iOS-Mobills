@@ -7,15 +7,15 @@
 
 import Foundation
 class User {
-    let id: UUID
+    let id: String
     let nome: String
     let email: String
     let password: String
     
-    init(id: UUID = UUID(), nome: String, email: String, password: String) {
+    init(id: String , dictionary: [String: AnyObject]) {
         self.id = id
-        self.nome = nome
-        self.email = email
-        self.password = password
+        self.nome = dictionary["nome"] as? String ?? ""
+        self.email = dictionary["email"] as? String ?? ""
+        self.password = dictionary["password"] as? String ?? ""
     }
 }

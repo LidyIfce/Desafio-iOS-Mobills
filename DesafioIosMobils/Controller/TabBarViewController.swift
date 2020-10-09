@@ -17,6 +17,10 @@ class TabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    func fetchUser() {
+        UserService.shared.fetchUser { _ in }
+    }
+    
     func authenticateUserAndConfigureUI() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
@@ -29,8 +33,7 @@ class TabBarViewController: UITabBarController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            
-            print("usuario já está logado")
+            fetchUser()
         }
     }
     

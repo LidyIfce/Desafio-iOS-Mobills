@@ -8,7 +8,7 @@
 import UIKit
 
 class TransacoesTableViewCell: UITableViewCell {
-    var despesa: Despesa?
+    var transacao: TransacaoModel?
     
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var valor: UILabel!
@@ -26,15 +26,15 @@ class TransacoesTableViewCell: UITableViewCell {
         wrapperView.layer.cornerRadius = 8
     }
     
-    func createCell(despesa: Despesa) {
-        self.despesa = despesa
+    func createCell(transacao: TransacaoModel) {
+        self.transacao = transacao
        
     }
     
     func configureCell() {
-        if let despesa = despesa {
-            self.valor.text = despesa.valorString()
-            self.descricao.text = despesa.descricao
+        if let transacao = transacao {
+            self.valor.text = transacao.valor.description
+            self.descricao.text = transacao.descricao
         }
     }
 

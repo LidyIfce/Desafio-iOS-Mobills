@@ -1,17 +1,17 @@
 //
-//  Despesa.swift
+//  Receita.swift
 //  DesafioIosMobils
 //
 //  Created by Lidiane Gomes Barbosa on 09/10/20.
 //
 
 import Foundation
-class Despesa: TransacaoModel {
-    var pago: Bool = false
-    let transacaoType: TransacaoType = .despesa
+class Receita: TransacaoModel {
+    var recebido: Bool = false
+    let transacaoType: TransacaoType = .receita
     
     override init(uid: String, dictionary: [String: Any]) {
         super.init(uid: uid, dictionary: dictionary)
-        pago = super.status
+        recebido = super.status
     }
 }
