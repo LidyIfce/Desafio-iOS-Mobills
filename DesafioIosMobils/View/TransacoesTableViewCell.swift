@@ -8,7 +8,11 @@
 import UIKit
 
 class TransacoesTableViewCell: UITableViewCell {
-    var transacao: TransacaoModel?
+    var transacao: TransacaoModel? {
+        didSet {
+            configureCell()
+        }
+    }
     
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var valor: UILabel!
@@ -26,15 +30,20 @@ class TransacoesTableViewCell: UITableViewCell {
         wrapperView.layer.cornerRadius = 8
     }
     
-    func createCell(transacao: TransacaoModel) {
-        self.transacao = transacao
-       
-    }
-    
     func configureCell() {
         if let transacao = transacao {
             self.valor.text = transacao.valor.description
             self.descricao.text = transacao.descricao
+            self.status.tintColor = transacao.status ? UIColor.systemGreen : UIColor.red
+            switch transacao.transacaoType {
+            case .despesa:
+                wrapperView.backgroundColor = UIColor.systemRed.withAlphaComponent(0.50)
+            case .receita:
+                wrapperView.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.50)
+            default:
+                break
+            }
+           
         }
     }
 

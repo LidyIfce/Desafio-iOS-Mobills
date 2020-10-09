@@ -15,16 +15,14 @@ class TransacaoModel {
     let descricao: String
     var timestamp: Date!
     let status: Bool
-    var tipo: TransacaoType = .todas
+    let transacaoType: TransacaoType!
     
-    init(uid: String, dictionary: [String: Any]) {
+    init(uid: String, valor: Double, descricao: String, status: Bool, timestamp: Date, transacaoType: TransacaoType) {
         self.uid = uid
-        self.valor = dictionary["valor"] as? Double ?? 0.0
-        self.descricao = dictionary["descricao"] as? String ?? ""
-        self.status = dictionary["status"] as? Bool ?? false
-        if let timestamp = dictionary["timestamp"] as? Double {
-            self.timestamp = Date(timeIntervalSince1970: timestamp)
-        }
-        
+        self.valor = valor
+        self.descricao = descricao
+        self.status = status
+        self.timestamp = timestamp
+        self.transacaoType = transacaoType
     }
 }

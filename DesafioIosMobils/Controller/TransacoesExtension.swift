@@ -8,12 +8,12 @@
 import UIKit
 extension TransacoesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        transacoes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TransacoesTableViewCell.reuseIdentifier) as? TransacoesTableViewCell else { return UITableViewCell() }
-      //  cell.createCell(despesa: despesas[indexPath.row])
+        cell.transacao = transacoes[indexPath.row]
        
         return cell
     }

@@ -35,7 +35,23 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     @IBOutlet weak var buttonTipoTransacao: UIButton!
     @IBAction func alternarTransacao(_ sender: Any) {
+        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let despesa = UIAlertAction(title: "Despesa", style: .default, handler: { _ in
+            self.transacaoType = .despesa
+        })
+        let receita = UIAlertAction(title: "Receita", style: .default, handler: { _ in
+            self.transacaoType = .receita
+        })
+
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        menu.addAction(despesa)
+        menu.addAction(receita)
+        menu.addAction(cancelAction)
+
+        present(menu, animated: true, completion: nil)
     }
+    
     @IBOutlet weak var valor: UITextField!
     
     @IBOutlet weak var descricao: UITextField!
@@ -51,7 +67,8 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
             self.labelStatus.text = sender.isOn ? "Pago" : "Não foi pago"
         case .receita:
             self.labelStatus.text = sender.isOn ? "Recebido" : "Não foi recebido"
-        case .todas: break
+        case .todas:
+            break
         }
     }
     
@@ -60,7 +77,7 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     @IBAction func salvar(_ sender: Any) {
         guard let valorStr = valor.text else { return }
-        let tipo = transacaoType.rawValue
+        let tipo = self.transacaoType.rawValue
         guard let descricao = descricao.text else { return }
         let status = buttonSwitch.isOn
         let valor = NSString(string: valorStr).doubleValue
@@ -108,7 +125,6 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         buttonTipoTransacao.titleLabel?.tintColor = .white
         buttonTipoTransacao.layer.cornerRadius = 5
         buttonTipoTransacao.layer.masksToBounds = true
-        buttonTipoTransacao.addTarget(self, action: #selector(selecionarTipoTransacao), for: .touchUpInside)
         
         buttonTipoTransacao.translatesAutoresizingMaskIntoConstraints = false
         buttonTipoTransacao.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -120,25 +136,6 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         buttonSalvar.layer.cornerRadius = 5
         buttonSalvar.layer.masksToBounds = true
     }
-    
-    @objc func selecionarTipoTransacao() {
-        let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let despesa = UIAlertAction(title: "Despesa", style: .default, handler: { _ in
-            self.transacaoType = .despesa
-        })
-        let receita = UIAlertAction(title: "Receita", style: .default, handler: { _ in
-            self.transacaoType = .receita
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        
-        menu.addAction(despesa)
-        menu.addAction(receita)
-        menu.addAction(cancelAction)
-    
-        present(menu, animated: true, completion: nil)
-    }
-    
     
     @objc func tapDone(sender: UITextView) {
         view.endEditing(true)

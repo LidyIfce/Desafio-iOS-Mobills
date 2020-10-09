@@ -8,10 +8,9 @@
 import Foundation
 class Receita: TransacaoModel {
     var recebido: Bool = false
-    let transacaoType: TransacaoType = .receita
     
-    override init(uid: String, dictionary: [String: Any]) {
-        super.init(uid: uid, dictionary: dictionary)
+    init(uid: String, transacao: TransacaoModel) {
+        super.init(uid: uid, valor: transacao.valor, descricao: transacao.descricao, status: transacao.status, timestamp: transacao.timestamp, transacaoType: transacao.transacaoType)
         recebido = super.status
     }
 }
