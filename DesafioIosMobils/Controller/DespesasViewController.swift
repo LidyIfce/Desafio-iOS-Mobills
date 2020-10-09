@@ -17,8 +17,11 @@ class DespesasViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        tableView.allowsSelection = false
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.allowsSelection = true
+    }
     func configureTableView() {
         tableView.tableFooterView = UIView()
     }

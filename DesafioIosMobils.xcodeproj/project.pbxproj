@@ -15,6 +15,8 @@
 		AF2EECC5252FC28A0037806D /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECC4252FC28A0037806D /* RegistroViewController.swift */; };
 		AF2EECCA252FC7650037806D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECC9252FC7650037806D /* LoginViewController.swift */; };
 		AF2EECCE252FD2AE0037806D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECCD252FD2AE0037806D /* AuthService.swift */; };
+		AF2EECD2252FE08A0037806D /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECD1252FE08A0037806D /* TabBarController.storyboard */; };
+		AF2EECD5252FE2E20037806D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EECD4252FE2E20037806D /* TabBarViewController.swift */; };
 		AFB5FEAF252F85B30014B377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEAE252F85B30014B377 /* AppDelegate.swift */; };
 		AFB5FEB1252F85B30014B377 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEB0252F85B30014B377 /* SceneDelegate.swift */; };
 		AFB5FEB3252F85B30014B377 /* DespesasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB5FEB2252F85B30014B377 /* DespesasViewController.swift */; };
@@ -38,6 +40,8 @@
 		AF2EECC4252FC28A0037806D /* RegistroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		AF2EECC9252FC7650037806D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AF2EECCD252FD2AE0037806D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AF2EECD1252FE08A0037806D /* TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
+		AF2EECD4252FE2E20037806D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AFB5FEAB252F85B30014B377 /* DesafioIosMobils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioIosMobils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB5FEAE252F85B30014B377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFB5FEB0252F85B30014B377 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				AFB5FEC3252F87290014B377 /* DespesasExtension.swift */,
 				AF2EECC4252FC28A0037806D /* RegistroViewController.swift */,
 				AF2EECC9252FC7650037806D /* LoginViewController.swift */,
+				AF2EECD4252FE2E20037806D /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				AFB5FED2252F8EB70014B377 /* DespesasTableViewCell.swift */,
 				AF2EECBA252FBAC90037806D /* Registro.storyboard */,
 				AF2EECC1252FC0570037806D /* Login.storyboard */,
+				AF2EECD1252FE08A0037806D /* TabBarController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 			files = (
 				AFB5FEBB252F85B40014B377 /* LaunchScreen.storyboard in Resources */,
 				AF2EECBB252FBAC90037806D /* Registro.storyboard in Resources */,
+				AF2EECD2252FE08A0037806D /* TabBarController.storyboard in Resources */,
 				AF2EECC2252FC0570037806D /* Login.storyboard in Resources */,
 				AFB5FEB8252F85B40014B377 /* Assets.xcassets in Resources */,
 				AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */,
@@ -276,6 +283,7 @@
 			files = (
 				AF2EECCA252FC7650037806D /* LoginViewController.swift in Sources */,
 				AF2EECCE252FD2AE0037806D /* AuthService.swift in Sources */,
+				AF2EECD5252FE2E20037806D /* TabBarViewController.swift in Sources */,
 				AFB5FECB252F880D0014B377 /* Despesa.swift in Sources */,
 				AFB5FED3252F8EB70014B377 /* DespesasTableViewCell.swift in Sources */,
 				AFB5FEB3252F85B30014B377 /* DespesasViewController.swift in Sources */,

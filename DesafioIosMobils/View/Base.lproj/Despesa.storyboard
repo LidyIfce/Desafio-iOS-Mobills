@@ -24,7 +24,7 @@
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKe-z9-TFr">
-                                <rect key="frame" x="0.0" y="149" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="149" width="414" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DespesasTableViewCell" id="lBU-ds-FPa" customClass="DespesasTableViewCell" customModule="DesafioIosMobils" customModuleProvider="target">
@@ -127,11 +127,13 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="93.75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Atividades-->
         <scene sceneID="rT6-OZ-hah">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dCJ-7N-ABw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Atividades" image="dollarsign.square" catalog="system" id="uid-rm-yvj"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aar-FS-1zO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -147,6 +149,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dollarsign.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

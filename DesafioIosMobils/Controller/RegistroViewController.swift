@@ -24,21 +24,14 @@ class RegistroViewController: UIViewController {
         
         AuthService.shared.registrarUsuario(nome: nome, email: email, password: password) { (error, ref) in
             print("Cadastrado com sucesso!")
-            
-            let storyboard = UIStoryboard(name: "Despesa", bundle: nil)
-            guard let viewC = storyboard.instantiateViewController(identifier: "despesas") as? DespesasViewController else { fatalError() }
-            viewC.modalPresentationStyle = .fullScreen
-            self.present(viewC, animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func goToLogin(_ sender: Any) {
-        navigationController?.isNavigationBarHidden = true
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        guard let viewC = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { fatalError() }
-        navigationController?.pushViewController(viewC, animated: true)
-        
+        navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -47,6 +40,7 @@ class RegistroViewController: UIViewController {
     
 
     func configure() {
+        navigationController?.isNavigationBarHidden = true
         email.autocorrectionType = .no
         nome.autocorrectionType = .no
         email.keyboardType = .emailAddress

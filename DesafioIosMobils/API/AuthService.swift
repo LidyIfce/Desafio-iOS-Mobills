@@ -10,6 +10,10 @@ import Foundation
 struct AuthService {
     static let shared = AuthService()
     
+    func logUserIn(email: String, password: String, completion: AuthDataResultCallback? ) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     func registrarUsuario (nome: String, email: String, password: String, completion: @escaping(Error?, DatabaseReference) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
