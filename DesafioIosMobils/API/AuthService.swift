@@ -29,4 +29,12 @@ struct AuthService {
         }
     }
     
+    func logUserOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
 }

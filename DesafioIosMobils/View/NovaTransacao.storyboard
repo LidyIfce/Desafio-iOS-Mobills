@@ -73,7 +73,7 @@
                                 <rect key="frame" x="337" y="257" width="51" height="31"/>
                                 <color key="onTintColor" systemColor="systemBlueColor"/>
                                 <connections>
-                                    <action selector="switchStatus:" destination="3D3-67-iVC" eventType="valueChanged" id="1Di-sq-hT7"/>
+                                    <action selector="switchStatus:" destination="3D3-67-iVC" eventType="valueChanged" id="T2q-cg-44f"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfZ-6T-eC4">

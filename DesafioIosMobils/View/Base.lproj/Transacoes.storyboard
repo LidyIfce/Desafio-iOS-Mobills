@@ -140,6 +140,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Q9b-tm-1hz">
+                        <barButtonItem key="leftBarButtonItem" title="Sair" id="cT3-1A-1mj">
+                            <connections>
+                                <action selector="sair:" destination="BYZ-38-t0r" id="4hI-sp-2Ro"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="rxf-LS-EWI">
                             <connections>
                                 <action selector="adicionarNovaTransacao:" destination="BYZ-38-t0r" id="pdt-By-jTs"/>

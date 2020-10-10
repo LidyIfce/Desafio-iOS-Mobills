@@ -71,6 +71,8 @@ class TransacoesViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        fetchUser()
+        fetchTransacao()
         calcValores(transacoes: transacoes)
     }
 
@@ -81,6 +83,12 @@ class TransacoesViewController: UIViewController {
         present(viewC, animated: true)
     }
     
+    
+    @IBAction func sair(_ sender: Any) {
+        AuthService.shared.logUserOut()
+        exit(0)
+    }
+    
     func configureTableView() {
         tableView.tableFooterView = UIView()
     }
@@ -89,6 +97,7 @@ class TransacoesViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.shared.fetchUser(uid: uid) { user in
             self.user = user
+            print(user)
         }
     }
     
