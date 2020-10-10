@@ -155,6 +155,7 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         valor.keyboardType = .decimalPad
         valor.delegate = self
         descricao.keyboardType = .default
+        descricao.delegate = self
         valor.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
         descricao.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
     }
@@ -188,22 +189,34 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
 
 extension NovaTransacaoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let digit = Int(string) {
-            amt = amt * 10 + digit
-            valor.text = updateTextFieldValue()
+        if textField == valor {
+            if let digit = Int(string) {
+                amt = amt * 10 + digit
+                valor.text = updateTextFieldValue()
+            }
+            
+            if string == "" {
+                amt = amt / 10
+                valor.text = updateTextFieldValue()
+            }
+            return false
         }
-        
-        if string == "" {
-            amt = amt / 10
-            valor.text = updateTextFieldValue()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == descricao {
+            valor.resignFirstResponder()
+            print("desc")
         }
-        
-        return false
+        if textField == valor {
+            descricao.resignFirstResponder()
+            print("valor")
+        }
     }
     
     func updateTextFieldValue() -> String? {
         let number = Double(amt/100) + Double(amt % 100) / 100
         return String(number)
     }
-    
 }
