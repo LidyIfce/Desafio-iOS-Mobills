@@ -7,26 +7,51 @@
 
 import Firebase
 struct TransacaoService {
-    let userTransacaoRef = "user-transacao"
-   
+    let userTransacaoReference = "user-transacao"
+    
     static let shared = TransacaoService()
     
     func uploadTransacao(valor: Double, descricao: String, status: Bool, transacaoType: String, completion: @escaping(Error?, DatabaseReference) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let values = ["uid": uid, "timestamp": Int(NSDate().timeIntervalSince1970), "valor": valor, "descricao": descricao, "status": status, "transacaoType": transacaoType] as [String : Any]
+        
         let ref = Database.database().reference().child("transacoes").childByAutoId()
-        let userTransicaoRef = Database.database().reference().child(userTransacaoRef)
+        
+        let userTransicaoRef = Database.database().reference().child(userTransacaoReference)
         ref.updateChildValues(values) { (error, ref) in
             guard let transacaoId = ref.key else { return }
             userTransicaoRef.child(uid).updateChildValues([transacaoId: 1], withCompletionBlock: completion)
         }
     }
     
+    func updateTransacao(transacao: TransacaoModel, valor: Double, descricao: String, status: Bool, transacaoType: String, completion: @escaping(Error?, DatabaseReference) -> Void) {
+    
+        let values = ["uid": transacao.user.id, "timestamp": Int(NSDate().timeIntervalSince1970), "valor": valor, "descricao": descricao, "status": status, "transacaoType": transacaoType] as [String : Any]
+        
+    
+        let ref = Database.database().reference().child("transacoes").child(transacao.uid)
+        
+        let userTransicaoRef = Database.database().reference().child(userTransacaoReference)
+        ref.updateChildValues(values) { (error, ref) in
+            guard let transacaoId = ref.key else { return }
+            userTransicaoRef.child(transacao.user.id).updateChildValues([transacaoId: 1], withCompletionBlock: completion)
+        }
+        
+    }
+    
+    func removeTransacao(transacao: TransacaoModel,completion: @escaping(Error?, DatabaseReference) -> Void) {
+    
+        var ref = Database.database().reference().child("transacoes").child(transacao.uid)
+        ref.removeValue()
+        ref = Database.database().reference().child(userTransacaoReference).child(transacao.user.id).child(transacao.uid)
+        ref.removeValue(completionBlock: completion)
+        
+    }
     
     func fetchTransacoes(forUser user: User, completion: @escaping([TransacaoModel]) -> Void) {
         var transacoes = [TransacaoModel]()
-        Database.database().reference().child(userTransacaoRef).child(user.id).observe(.childAdded) { snapshot in
+        Database.database().reference().child(userTransacaoReference).child(user.id).observe(.childAdded) { snapshot in
             let transacaoId = snapshot.key
             
             Database.database().reference().child("transacoes").child(transacaoId).observeSingleEvent(of: .value) { snapshot in
@@ -49,3 +74,4 @@ struct TransacaoService {
         }
     }
 }
+

@@ -10,6 +10,7 @@ import UIKit
 class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     var amt = 0
+    var transacao: TransacaoModel?
     
     var transacaoType: TransacaoType = .receita {
         didSet {
@@ -35,6 +36,7 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     }
     
     @IBOutlet weak var buttonTipoTransacao: UIButton!
+    
     @IBAction func alternarTransacao(_ sender: Any) {
         let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let despesa = UIAlertAction(title: "Despesa", style: .default, handler: { _ in
@@ -43,13 +45,13 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         let receita = UIAlertAction(title: "Receita", style: .default, handler: { _ in
             self.transacaoType = .receita
         })
-
+        
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-
+        
         menu.addAction(despesa)
         menu.addAction(receita)
         menu.addAction(cancelAction)
-
+        
         present(menu, animated: true, completion: nil)
     }
     
@@ -77,19 +79,33 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     @IBOutlet weak var buttonSalvar: UIButton!
     
     @IBAction func salvar(_ sender: Any) {
+        
         guard let valorStr = valor.text else { return }
         let tipo = self.transacaoType.rawValue
         guard let descricao = descricao.text else { return }
         let status = buttonSwitch.isOn
         let valor = NSString(string: valorStr).doubleValue
-        TransacaoService.shared.uploadTransacao(valor: valor, descricao: descricao, status: status, transacaoType: tipo) { (error, ref) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
         
+        
+        if let transacao = transacao {
+            TransacaoService.shared.updateTransacao(transacao: transacao, valor: valor, descricao: descricao, status: status, transacaoType: tipo) { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        } else {
+            
+            TransacaoService.shared.uploadTransacao(valor: valor, descricao: descricao, status: status, transacaoType: tipo) { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -97,6 +113,17 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         configureButtonTipoTransicao()
         configureButtonSalvar()
         configureTextFields()
+        configureValoresParaModoEditar()
+    }
+    
+    
+    func configureValoresParaModoEditar() {
+        if let transacao = transacao {
+            self.descricao.text = transacao.descricao
+            self.valor.text = transacao.valor.description
+            self.buttonSwitch.isOn = transacao.status
+            self.transacaoType = transacao.transacaoType
+        }
     }
     
     func updateTextFieldValue() -> String? {
@@ -143,6 +170,7 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     }
     
 }
+
 extension NovaTransacaoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let digit = Int(string) {
