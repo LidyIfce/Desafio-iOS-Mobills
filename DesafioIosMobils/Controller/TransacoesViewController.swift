@@ -35,9 +35,12 @@ class TransacoesViewController: UIViewController {
             case .todas:
                 titleButton.setTitle("Transações", for: .normal)
             }
+            createSpinnerView()
             fetchTransacao()
         }
     }
+    let child = SpinnerViewController()
+    var activity = UIActivityIndicatorView(style: .large)
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var labelPendente: UILabel!
@@ -64,6 +67,7 @@ class TransacoesViewController: UIViewController {
         super.viewDidLoad()
         fetchUser()
         configureTableView()
+        createSpinnerView()
         setupButtonTitle()
         fetchTransacao()
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -74,6 +78,17 @@ class TransacoesViewController: UIViewController {
         fetchUser()
         fetchTransacao()
         calcValores(transacoes: transacoes)
+    }
+    
+    func createSpinnerView() {
+       
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+      
+        
     }
 
     @IBAction func adicionarNovaTransacao(_ sender: Any) {
@@ -125,6 +140,10 @@ class TransacoesViewController: UIViewController {
                 case .todas:
                     self.transacoes = transacoes
                 }
+                
+                self.child.willMove(toParent: nil)
+                self.child.view.removeFromSuperview()
+                self.child.removeFromParent()
             }
         }
     }
@@ -215,3 +234,19 @@ extension TransacoesViewController: TransacoesDelegate {
     }
 }
 
+class SpinnerViewController: UIViewController {
+    var spinner = UIActivityIndicatorView(style: .large)
+ 
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = .clear
+
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        spinner.color = .label
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+}
