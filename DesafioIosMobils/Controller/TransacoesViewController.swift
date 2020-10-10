@@ -43,14 +43,6 @@ class TransacoesViewController: UIViewController {
     @IBOutlet weak var labelRecebido: UILabel!
     @IBOutlet weak var valorRecebido: UILabel!
     
-    
-    @IBAction func adicionarNovaTransacao(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "NovaTransacao", bundle: nil)
-        guard let viewC = storyboard.instantiateViewController(identifier: "novatransacao") as? NovaTransacaoViewController else { fatalError() }
-        viewC.modalPresentationStyle = .fullScreen
-        present(viewC, animated: true)
-    }
-    
     lazy var titleButton: UIButton = {
         let button = UIButton()
         button.layer.backgroundColor = UIColor.systemBlue.cgColor
@@ -75,9 +67,15 @@ class TransacoesViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        fetchUser()
-
+    @IBAction func adicionarNovaTransacao(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "NovaTransacao", bundle: nil)
+        guard let viewC = storyboard.instantiateViewController(identifier: "novatransacao") as? NovaTransacaoViewController else { fatalError() }
+        viewC.modalPresentationStyle = .fullScreen
+        present(viewC, animated: true)
+    }
+    
+    func configureTableView() {
+        tableView.tableFooterView = UIView()
     }
     
     func fetchUser() {
@@ -86,6 +84,7 @@ class TransacoesViewController: UIViewController {
             self.user = user
         }
     }
+    
     func fetchTransacao() {
         if let user = user {
             TransacaoService.shared.fetchTransacoes(forUser: user) { (transacoes) in
@@ -115,10 +114,6 @@ class TransacoesViewController: UIViewController {
         }
     }
     
-    func configureTableView() {
-        tableView.tableFooterView = UIView()
-    }
-    
     @objc func selecionarTipoTransacao() {
         let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let transacoes = UIAlertAction(title: "Transações", style: .default, handler: { _ in
@@ -141,7 +136,7 @@ class TransacoesViewController: UIViewController {
         present(menu, animated: true, completion: nil)
         
         menu.view.subviews.flatMap({$0.constraints}).filter{ (one: NSLayoutConstraint)-> (Bool)  in
-          return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
+            return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
         }.first?.isActive = false
     }
     private func setupButtonTitle() {
@@ -175,24 +170,26 @@ class TransacoesViewController: UIViewController {
         switch transacaoType {
         case .receita:
             labelPendente.text = "Total pendente"
-            valorPendente.text = "R$ " + String(receitasPendentes)
+            valorPendente.text = formatNumber(number: receitasPendentes)
             labelRecebido.text = "Total recebido"
-            valorRecebido.text = "R$ " + String(receitasRecebidas)
+            valorRecebido.text = formatNumber(number: receitasRecebidas)
         case .despesa:
             labelPendente.text = "Total pendente"
-            valorPendente.text = "R$ " + String(despesasPendentes)
+            valorPendente.text = formatNumber(number: despesasPendentes)
             labelRecebido.text = "Total pago"
-            valorRecebido.text = "R$ " + String(despesasPagas)
+            valorRecebido.text = formatNumber(number: despesasPagas)
         case .todas:
             labelPendente.text = "Saldo atual"
             valorPendente.text = "R$ " + String(receitasRecebidas - despesasPagas)
             labelRecebido.text = "Balanço atual"
-            let result = (receitasPendentes + receitasRecebidas) - (despesasPagas + despesasPendentes)
-
-            let formatted = String(format: "R$ %.2f", result)
-            valorRecebido.text = formatted
+            let balanco = (receitasPendentes + receitasRecebidas) - (despesasPagas + despesasPendentes)
+            valorRecebido.text = formatNumber(number: balanco)
         }
         
+    }
+    
+    func formatNumber(number: Double) -> String {
+        String(format: "R$ %.2f", number)
     }
 }
 
