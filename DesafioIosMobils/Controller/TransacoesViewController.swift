@@ -69,6 +69,10 @@ class TransacoesViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        calcValores(transacoes: transacoes)
+    }
 
     @IBAction func adicionarNovaTransacao(_ sender: Any) {
         let storyboard = UIStoryboard(name: "NovaTransacao", bundle: nil)
