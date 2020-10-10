@@ -12,6 +12,18 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     var amt = 0
     var transacao: TransacaoModel?
     
+    @IBOutlet weak var buttonTipoTransacao: UIButton!
+    
+    @IBOutlet weak var valor: UITextField!
+    
+    @IBOutlet weak var descricao: UITextField!
+    
+    @IBOutlet weak var buttonSwitch: UISwitch!
+    
+    @IBOutlet weak var labelStatus: UILabel!
+    
+    @IBOutlet weak var buttonSalvar: UIButton!
+    
     var transacaoType: TransacaoType = .receita {
         didSet {
             switch transacaoType {
@@ -30,12 +42,21 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureButtonTipoTransicao()
+        configureButtonSalvar()
+        configureTextFields()
+        configureValoresParaModoEditar()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     @IBAction func cancelar(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var buttonTipoTransacao: UIButton!
     
     @IBAction func alternarTransacao(_ sender: Any) {
         let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -52,17 +73,8 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         menu.addAction(receita)
         menu.addAction(cancelAction)
         
-        present(menu, animated: true, completion: nil)
+        present(menu, animated: false, completion: nil)
     }
-    
-    @IBOutlet weak var valor: UITextField!
-    
-    @IBOutlet weak var descricao: UITextField!
-    
-    @IBOutlet weak var buttonSwitch: UISwitch!
-    
-    
-    @IBOutlet weak var labelStatus: UILabel!
     
     @IBAction func switchStatus(_ sender: UISwitch) {
         switch transacaoType {
@@ -75,17 +87,12 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         }
     }
     
-    
-    @IBOutlet weak var buttonSalvar: UIButton!
-    
     @IBAction func salvar(_ sender: Any) {
-        
         guard let valorStr = valor.text else { return }
         let tipo = self.transacaoType.rawValue
         guard let descricao = descricao.text else { return }
         let status = buttonSwitch.isOn
         let valor = NSString(string: valorStr).doubleValue
-        
         
         if let transacao = transacao {
             TransacaoService.shared.updateTransacao(transacao: transacao, valor: valor, descricao: descricao, status: status, transacaoType: tipo) { (error, ref) in
@@ -94,10 +101,8 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
                     return
                 }
                 self.dismiss(animated: true, completion: nil)
-                
             }
         } else {
-            
             TransacaoService.shared.uploadTransacao(valor: valor, descricao: descricao, status: status, transacaoType: tipo) { (error, ref) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -106,14 +111,6 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
                 self.dismiss(animated: true, completion: nil)
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureButtonTipoTransicao()
-        configureButtonSalvar()
-        configureTextFields()
-        configureValoresParaModoEditar()
     }
     
     
@@ -126,22 +123,16 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         }
     }
     
-    func updateTextFieldValue() -> String? {
-        let number = Double(amt/100) + Double(amt % 100) / 100
-        return String(number)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     func configureTextFields() {
         valor.keyboardType = .numberPad
         valor.delegate = self
         descricao.keyboardType = .default
-        valor.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        
-        descricao.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        valor.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+        descricao.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+    }
+    
+    @objc func tapDone(sender: UITextView) {
+        view.endEditing(true)
     }
     
     func configureButtonTipoTransicao() {
@@ -156,17 +147,13 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         
         buttonTipoTransacao.translatesAutoresizingMaskIntoConstraints = false
         buttonTipoTransacao.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        buttonTipoTransacao.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        buttonTipoTransacao.widthAnchor.constraint(equalToConstant: 110).isActive = true
     }
     
     func configureButtonSalvar() {
         buttonSalvar.layer.backgroundColor = UIColor.systemGreen.cgColor
         buttonSalvar.layer.cornerRadius = 5
         buttonSalvar.layer.masksToBounds = true
-    }
-    
-    @objc func tapDone(sender: UITextView) {
-        view.endEditing(true)
     }
     
 }
@@ -185,4 +172,10 @@ extension NovaTransacaoViewController: UITextFieldDelegate {
         
         return false
     }
+    
+    func updateTextFieldValue() -> String? {
+        let number = Double(amt/100) + Double(amt % 100) / 100
+        return String(number)
+    }
+    
 }
