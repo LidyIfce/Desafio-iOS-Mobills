@@ -97,7 +97,6 @@ class TransacoesViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.shared.fetchUser(uid: uid) { user in
             self.user = user
-            print(user)
         }
     }
     

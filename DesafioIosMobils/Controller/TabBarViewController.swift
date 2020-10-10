@@ -13,7 +13,6 @@ class TabBarViewController: UITabBarController {
     var user: User?
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   logUserOut()
         authenticateUserAndConfigureUI()
     }
     
@@ -31,22 +30,11 @@ class TabBarViewController: UITabBarController {
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 guard let viewC = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { fatalError() }
-            
-              let nav = UINavigationController(rootViewController: viewC)
-                nav.isNavigationBarHidden = true
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true, completion: nil)
+                viewC.modalPresentationStyle = .fullScreen
+                self.present(viewC, animated: true, completion: nil)
             }
         } else {
             fetchUser()
-        }
-    }
-    
-    func logUserOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
 }
