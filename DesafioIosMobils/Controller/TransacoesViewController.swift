@@ -139,6 +139,10 @@ class TransacoesViewController: UIViewController {
         menu.addAction(cancelAction)
         
         present(menu, animated: true, completion: nil)
+        
+        menu.view.subviews.flatMap({$0.constraints}).filter{ (one: NSLayoutConstraint)-> (Bool)  in
+          return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
+        }.first?.isActive = false
     }
     private func setupButtonTitle() {
         titleButton.translatesAutoresizingMaskIntoConstraints = false
