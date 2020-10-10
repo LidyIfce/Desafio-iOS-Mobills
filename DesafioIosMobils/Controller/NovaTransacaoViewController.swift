@@ -11,8 +11,11 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     var amt = 0
     var transacao: TransacaoModel?
-    
+    var indice: Int?
+    weak var delegate: TransacoesDelegate?
     @IBOutlet weak var buttonTipoTransacao: UIButton!
+    
+    @IBOutlet weak var buttonDeletar: UIButton!
     
     @IBOutlet weak var valor: UITextField!
     
@@ -48,6 +51,10 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         configureButtonSalvar()
         configureTextFields()
         configureValoresParaModoEditar()
+        
+        if transacao == nil {
+            buttonDeletar.removeFromSuperview()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,6 +63,21 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     @IBAction func cancelar(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func deletarTransacao(_ sender: Any) {
+        if let transacao = transacao {
+            TransacaoService.shared.removeTransacao(transacao: transacao) { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let indice = self.indice {
+                    self.delegate?.didRemove(indice: indice)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @IBAction func alternarTransacao(_ sender: Any) {
@@ -77,9 +99,9 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
         present(menu, animated: true, completion: nil)
         
         menu.view.subviews.flatMap({$0.constraints}).filter{ (one: NSLayoutConstraint)-> (Bool)  in
-          return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
+            return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
         }.first?.isActive = false
-       
+        
     }
     
     @IBAction func switchStatus(_ sender: UISwitch) {

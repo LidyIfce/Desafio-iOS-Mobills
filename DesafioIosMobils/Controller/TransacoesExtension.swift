@@ -22,6 +22,8 @@ extension TransacoesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let viewC = storyboard.instantiateViewController(identifier: "novatransacao") as? NovaTransacaoViewController else { fatalError() }
         viewC.modalPresentationStyle = .fullScreen
         viewC.transacao = transacoes[indexPath.row]
+        viewC.indice = indexPath.row
+        viewC.delegate = self
         present(viewC, animated: true)
     }
     

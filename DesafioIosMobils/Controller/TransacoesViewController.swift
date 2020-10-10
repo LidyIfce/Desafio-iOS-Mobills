@@ -7,6 +7,9 @@
 
 import UIKit
 import Firebase
+protocol TransacoesDelegate: class {
+    func didRemove(indice: Int)
+}
 
 class TransacoesViewController: UIViewController {
     
@@ -66,7 +69,7 @@ class TransacoesViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
     }
-    
+
     @IBAction func adicionarNovaTransacao(_ sender: Any) {
         let storyboard = UIStoryboard(name: "NovaTransacao", bundle: nil)
         guard let viewC = storyboard.instantiateViewController(identifier: "novatransacao") as? NovaTransacaoViewController else { fatalError() }
@@ -190,6 +193,13 @@ class TransacoesViewController: UIViewController {
     
     func formatNumber(number: Double) -> String {
         String(format: "R$ %.2f", number)
+    }
+}
+
+extension TransacoesViewController: TransacoesDelegate {
+    func didRemove(indice: Int) {
+        transacoes.remove(at: indice)
+        tableView.reloadData()
     }
 }
 
