@@ -17,6 +17,35 @@ class RegistroViewController: UIViewController {
     
     @IBOutlet weak var buttonRegistrar: UIButton!
  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func configureUI() {
+        navigationController?.isNavigationBarHidden = true
+        
+        nome.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+        email.autocorrectionType = .no
+        nome.autocorrectionType = .no
+        email.keyboardType = .emailAddress
+        email.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+        buttonRegistrar.layer.cornerRadius = 5
+        buttonRegistrar.layer.masksToBounds = true
+        
+        password.isSecureTextEntry = true
+        password.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+    }
+    
+    @objc func tapDone() {
+        view.endEditing(true)
+    }
+    
     @IBAction func registrar(_ sender: Any) {
         guard let nome = nome.text else { return }
         guard let email = email.text else { return }
@@ -30,25 +59,6 @@ class RegistroViewController: UIViewController {
     
     @IBAction func goToLogin(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-        
-    }
-    
-
-    func configure() {
-        navigationController?.isNavigationBarHidden = true
-        email.autocorrectionType = .no
-        nome.autocorrectionType = .no
-        email.keyboardType = .emailAddress
-     
-        buttonRegistrar.layer.cornerRadius = 5
-        buttonRegistrar.layer.masksToBounds = true
-        
-        password.isSecureTextEntry = true
     }
 
 }

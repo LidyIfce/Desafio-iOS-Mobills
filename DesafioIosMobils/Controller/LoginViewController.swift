@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureUI()
         // Do any additional setup after loading the view.
     }
     
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-    func configureView() {
+    func configureUI() {
         navigationController?.isNavigationBarHidden = true
         
         email.autocorrectionType = .no
