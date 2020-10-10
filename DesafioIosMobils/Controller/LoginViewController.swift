@@ -11,13 +11,41 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var buttonEntrar: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    func configureView() {
+        navigationController?.isNavigationBarHidden = true
+        
+        email.autocorrectionType = .no
+        email.keyboardType = .emailAddress
+        email.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+       
+        buttonEntrar.layer.cornerRadius = 5
+        buttonEntrar.layer.masksToBounds = true
+        
+        password.isSecureTextEntry = true
+        password.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
+    }
+
+    @objc func tapDone() {
+        view.endEditing(true)
+    }
+    
     @IBAction func goToRegistrar(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Registro", bundle: nil)
         guard let viewC = storyboard.instantiateViewController(identifier: "registro") as? RegistroViewController else { fatalError() }
         navigationController?.pushViewController(viewC, animated: true)
     }
-   
-    @IBOutlet weak var buttonEntrar: UIButton!
     
     @IBAction func login(_ sender: Any) {
         
@@ -33,19 +61,5 @@ class LoginViewController: UIViewController {
             self.dismiss(animated: true)
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-        // Do any additional setup after loading the view.
-    }
 
-    func configure() {
-        email.autocorrectionType = .no
-        email.keyboardType = .emailAddress
-        navigationController?.isNavigationBarHidden = true
-        buttonEntrar.layer.cornerRadius = 5
-        buttonEntrar.layer.masksToBounds = true
-        
-        password.isSecureTextEntry = true
-    }
 }
