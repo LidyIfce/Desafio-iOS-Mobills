@@ -10,6 +10,7 @@ import UIKit
 class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     
     var amt = 0
+    
     var transacaoType: TransacaoType = .receita {
         didSet {
             switch transacaoType {

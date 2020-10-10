@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import Firebase
 
 class TransacoesViewController: UIViewController {
     
     var transacoes = [TransacaoModel]() {
         didSet {
+            calcValores(transacoes: transacoes)
             tableView.reloadData()
+        }
+    }
+    private var user: User? {
+        didSet {
+            fetchTransacao()
+            calcValores(transacoes: transacoes)
         }
     }
     var transacaoType: TransacaoType = .todas {
@@ -33,7 +41,7 @@ class TransacoesViewController: UIViewController {
     
     @IBOutlet weak var valorPendente: UILabel!
     @IBOutlet weak var labelRecebido: UILabel!
-    @IBOutlet weak var valueRecebido: UILabel!
+    @IBOutlet weak var valorRecebido: UILabel!
     
     
     @IBAction func adicionarNovaTransacao(_ sender: Any) {
@@ -59,36 +67,51 @@ class TransacoesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUser()
         configureTableView()
         setupButtonTitle()
         fetchTransacao()
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchUser()
+
+    }
+    
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchUser(uid: uid) { user in
+            self.user = user
+        }
+    }
     func fetchTransacao() {
-        TransacaoService.shared.fetchTransacao() { (transacoes) in
-            var receitas = [Receita]()
-            var despesas = [Despesa]()
-            for transacao in transacoes {
-                switch transacao.transacaoType {
-                case .despesa:
-                    despesas.append(Despesa(uid: transacao.uid,transacao: transacao))
+        if let user = user {
+            TransacaoService.shared.fetchTransacoes(forUser: user) { (transacoes) in
+                var receitas = [TransacaoModel]()
+                var despesas = [TransacaoModel]()
+                for transacao in transacoes {
+                    switch transacao.transacaoType {
+                    case .despesa:
+                        despesas.append(transacao)
+                    case .receita:
+                        receitas.append(transacao)
+                    case .todas:
+                        break
+                    default: break
+                    }
+                }
+                
+                switch self.transacaoType {
                 case .receita:
-                    receitas.append(Receita(uid: transacao.uid, transacao: transacao))
+                    self.transacoes = receitas
+                case .despesa:
+                    self.transacoes = despesas
                 case .todas:
-                    break
-                default: break
+                    self.transacoes = transacoes
                 }
             }
-            
-            switch self.transacaoType {
-            case .receita:
-                self.transacoes = receitas
-            case .despesa:
-                self.transacoes = despesas
-            case .todas:
-                self.transacoes = transacoes
-            }
-           
         }
     }
     
@@ -107,14 +130,14 @@ class TransacoesViewController: UIViewController {
         let receita = UIAlertAction(title: "Receita", style: .default, handler: { _ in
             self.transacaoType = .receita
         })
-
+        
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-
+        
         menu.addAction(transacoes)
         menu.addAction(despesa)
         menu.addAction(receita)
         menu.addAction(cancelAction)
-
+        
         present(menu, animated: true, completion: nil)
     }
     private func setupButtonTitle() {
@@ -122,6 +145,50 @@ class TransacoesViewController: UIViewController {
         titleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         titleButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         navigationItem.titleView = titleButton
+    }
+    
+    func calcValores(transacoes: [TransacaoModel]) {
+        var receitasRecebidas: Double = 0
+        var receitasPendentes: Double = 0
+        var despesasPagas: Double = 0
+        var despesasPendentes: Double = 0
+        
+        for transacao in transacoes {
+            if transacao.transacaoType == .receita {
+                if transacao.status == true {
+                    receitasRecebidas += transacao.valor
+                } else {
+                    receitasPendentes += transacao.valor
+                }
+            } else if transacao.transacaoType == .despesa {
+                if transacao.status == true {
+                    despesasPagas += transacao.valor
+                } else {
+                    despesasPendentes += transacao.valor
+                }
+            }
+        }
+        switch transacaoType {
+        case .receita:
+            labelPendente.text = "Total pendente"
+            valorPendente.text = "R$ " + String(receitasPendentes)
+            labelRecebido.text = "Total recebido"
+            valorRecebido.text = "R$ " + String(receitasRecebidas)
+        case .despesa:
+            labelPendente.text = "Total pendente"
+            valorPendente.text = "R$ " + String(despesasPendentes)
+            labelRecebido.text = "Total pago"
+            valorRecebido.text = "R$ " + String(despesasPagas)
+        case .todas:
+            labelPendente.text = "Saldo atual"
+            valorPendente.text = "R$ " + String(receitasRecebidas - despesasPagas)
+            labelRecebido.text = "Balanço atual"
+            let result = (receitasPendentes + receitasRecebidas) - (despesasPagas + despesasPendentes)
+
+            let formatted = String(format: "R$ %.2f", result)
+            valorRecebido.text = formatted
+        }
+        
     }
 }
 

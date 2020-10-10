@@ -26,10 +26,10 @@
         <!--Transacoes-->
         <scene sceneID="Lrk-xE-6yB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGR-eK-tCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Transacoes" id="jkj-sn-a5x" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="NBj-sw-dAm"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hGR-eK-tCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-466" y="496"/>
         </scene>

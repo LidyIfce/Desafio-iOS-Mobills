@@ -16,13 +16,15 @@ class TransacaoModel {
     var timestamp: Date!
     let status: Bool
     let transacaoType: TransacaoType!
+    let user: User!
     
-    init(uid: String, valor: Double, descricao: String, status: Bool, timestamp: Date, transacaoType: TransacaoType) {
+    init(uid: String, user: User, valor: Double, descricao: String, status: Bool, timestamp: Date, transacaoType: TransacaoType) {
         self.uid = uid
         self.valor = valor
         self.descricao = descricao
         self.status = status
         self.timestamp = timestamp
         self.transacaoType = transacaoType
+        self.user = user
     }
 }

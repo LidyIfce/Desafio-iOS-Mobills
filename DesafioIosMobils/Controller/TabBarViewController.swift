@@ -10,15 +10,20 @@ import Firebase
 
 class TabBarViewController: UITabBarController {
     
+    var user: User?
     override func viewDidLoad() {
         super.viewDidLoad()
-    //   logUserOut()
+    //    logUserOut()
         authenticateUserAndConfigureUI()
-        // Do any additional setup after loading the view.
     }
     
     func fetchUser() {
-        UserService.shared.fetchUser { _ in }
+        DispatchQueue.main.async {
+            guard let id = Auth.auth().currentUser?.uid else { return }
+            UserService.shared.fetchUser(uid: id) { user in
+                self.user = user
+            }
+        }
     }
     
     func authenticateUserAndConfigureUI() {

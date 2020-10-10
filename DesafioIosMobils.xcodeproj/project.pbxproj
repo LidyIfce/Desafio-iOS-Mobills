@@ -12,8 +12,6 @@
 		AF2855D32530A1EE00B7B4CE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2855D22530A1EE00B7B4CE /* UserService.swift */; };
 		AF2855E72530A4E700B7B4CE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AF2855E62530A4E700B7B4CE /* Podfile */; };
 		AF28560E2530BF8F00B7B4CE /* TransacaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28560D2530BF8F00B7B4CE /* TransacaoService.swift */; };
-		AF2856112530CC1300B7B4CE /* Receita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856102530CC1300B7B4CE /* Receita.swift */; };
-		AF2856142530CE4000B7B4CE /* Despesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856132530CE4000B7B4CE /* Despesa.swift */; };
 		AF2856172530DCDB00B7B4CE /* extensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2856162530DCDB00B7B4CE /* extensionTextField.swift */; };
 		AF2EECA7252FB4D80037806D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */; };
 		AF2EECBB252FBAC90037806D /* Registro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2EECBA252FBAC90037806D /* Registro.storyboard */; };
@@ -43,8 +41,6 @@
 		AF2855D22530A1EE00B7B4CE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		AF2855E62530A4E700B7B4CE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		AF28560D2530BF8F00B7B4CE /* TransacaoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacaoService.swift; sourceTree = "<group>"; };
-		AF2856102530CC1300B7B4CE /* Receita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receita.swift; sourceTree = "<group>"; };
-		AF2856132530CE4000B7B4CE /* Despesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Despesa.swift; sourceTree = "<group>"; };
 		AF2856162530DCDB00B7B4CE /* extensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionTextField.swift; sourceTree = "<group>"; };
 		AF2EECA6252FB4D80037806D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AF2EECBA252FBAC90037806D /* Registro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registro.storyboard; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 			children = (
 				AFB5FECA252F880D0014B377 /* Transacao.swift */,
 				AF2EECBD252FBB450037806D /* User.swift */,
-				AF2856102530CC1300B7B4CE /* Receita.swift */,
-				AF2856132530CE4000B7B4CE /* Despesa.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,8 +311,6 @@
 				AF2EECC5252FC28A0037806D /* RegistroViewController.swift in Sources */,
 				AFB5FEB1252F85B30014B377 /* SceneDelegate.swift in Sources */,
 				AFB5FEC4252F87290014B377 /* TransacoesExtension.swift in Sources */,
-				AF2856142530CE4000B7B4CE /* Despesa.swift in Sources */,
-				AF2856112530CC1300B7B4CE /* Receita.swift in Sources */,
 				AF2EECBE252FBB450037806D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

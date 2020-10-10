@@ -11,7 +11,7 @@ class User {
     let nome: String
     let email: String
     let password: String
-    
+
     init(id: String , dictionary: [String: AnyObject]) {
         self.id = id
         self.nome = dictionary["nome"] as? String ?? ""
