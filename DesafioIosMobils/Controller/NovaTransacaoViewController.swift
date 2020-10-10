@@ -152,7 +152,7 @@ class NovaTransacaoViewController: UIViewController, UIActionSheetDelegate {
     }
     
     func configureTextFields() {
-        valor.keyboardType = .numberPad
+        valor.keyboardType = .decimalPad
         valor.delegate = self
         descricao.keyboardType = .default
         valor.addDoneButton(title: "Done", target: self, selector: #selector(tapDone))
