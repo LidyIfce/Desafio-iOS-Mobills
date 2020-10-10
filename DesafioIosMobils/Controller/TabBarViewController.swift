@@ -30,8 +30,9 @@ class TabBarViewController: UITabBarController {
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 guard let viewC = storyboard.instantiateViewController(identifier: "login") as? LoginViewController else { fatalError() }
-                viewC.modalPresentationStyle = .fullScreen
-                self.present(viewC, animated: true, completion: nil)
+                let nav = UINavigationController(rootViewController: viewC)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
             }
         } else {
             fetchUser()

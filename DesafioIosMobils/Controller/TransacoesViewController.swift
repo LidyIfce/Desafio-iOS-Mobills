@@ -140,11 +140,11 @@ class TransacoesViewController: UIViewController {
                 case .todas:
                     self.transacoes = transacoes
                 }
-                
-                self.child.willMove(toParent: nil)
-                self.child.view.removeFromSuperview()
-                self.child.removeFromParent()
             }
+            
+            self.child.willMove(toParent: nil)
+            self.child.view.removeFromSuperview()
+            self.child.removeFromParent()
         }
     }
     
